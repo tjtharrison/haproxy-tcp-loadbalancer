@@ -1,0 +1,12 @@
+version: '3.7'
+services:
+ haproxy:
+  cap_add:
+    - 'ALL'
+  image: 'million12/haproxy'
+  container_name: 'haproxy-tcp'
+  volumes:
+    - './config/haproxy.cfg:/etc/haproxy/haproxy.cfg'
+  ports:
+    - '${FIRST_BIND_PORT}:${FIRST_BIND_PORT}'
+  restart: 'always'
